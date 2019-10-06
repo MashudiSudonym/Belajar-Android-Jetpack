@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Jepara Language</string>
+    <string name="no_data">No Data</string>
+    <string name="setting">Settings</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="choose_language_menu">Choose Language</string>
+    <string name="image_description" translatable="false">image description</string>
+</resources>

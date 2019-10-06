@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_data">Tidak Ada Data</string>
+    <string name="setting">Pengaturan</string>
+    <string name="app_name">Bahasa Jepara</string>
+    <string name="language_setting">Pengaturan Bahasa</string>
+    <string name="choose_language_menu">Pilih Bahasa</string>
+</resources>
