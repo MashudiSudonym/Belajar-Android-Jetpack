@@ -11,6 +11,7 @@ class MainViewModel(private val applicationRepository: ApplicationRepository) : 
     fun getContent(): LiveData<Resource<PagedList<ContentEntity>>> =
         applicationRepository.getContent()
 
+    // with underscore sign, this variable must be private for this class
     private val _searchKeyword: MutableLiveData<String> = MutableLiveData()
     val searchContent: LiveData<Resource<PagedList<ContentEntity>>> =
         Transformations.switchMap(_searchKeyword) {
