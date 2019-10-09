@@ -1,7 +1,7 @@
 package c.m.jeparalanguage.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import c.m.jeparalanguage.R
 import c.m.jeparalanguage.ui.main.MainFragment
 
