@@ -6,3 +6,8 @@
 ![Detail Page](https://lh3.googleusercontent.com/8TsXrhy_YC20XFHLJJB0d9UpukracncF37s5ro5_Gga4V-sQZ2OdmyoPvJaXZ5gdFpVHKsCweRg8 "Detail Page")
 ![Search Page](https://lh3.googleusercontent.com/GPASX0urRFW0hzOMmhAFKtBcao-Kj45vh1lCai6YnsipELCZaVYEE_KFmhuBWKIpLgm7BK-s7R9_ "Search Page")
 Link Preview Video : [YoutubeVideo](https://www.youtube.com/watch?v=PijMjw9cuGY)
+
+Jika ingin mencoba aplikasi ini silahkan clone repository dan running / build menggunakan Android Studio.
+
+## Library yang digunakan
+[*] ![AndroidX]()
