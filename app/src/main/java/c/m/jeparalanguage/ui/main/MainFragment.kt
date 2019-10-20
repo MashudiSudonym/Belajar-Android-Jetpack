@@ -57,6 +57,7 @@ class MainFragment : Fragment() {
         // unfocused search view state
         if (!sv_main.isFocused) searchNotFocus()
 
+        // search view main listener
         sv_main.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
@@ -71,14 +72,14 @@ class MainFragment : Fragment() {
                                 when (it.status) {
                                     Status.LOADING -> {
                                         // View Status
-                                        progress_bar_main.visible()
+                                        shimmerStart()
                                         rv_main.gone()
                                         rv_search.gone()
                                         tv_no_data.gone()
                                     }
                                     Status.SUCCESS -> {
                                         // View Status
-                                        progress_bar_main.gone()
+                                        shimmerStop()
                                         rv_main.gone()
                                         rv_search.visible()
                                         tv_no_data.gone()
@@ -98,7 +99,7 @@ class MainFragment : Fragment() {
                                     }
                                     Status.ERROR -> {
                                         // View Status
-                                        progress_bar_main.gone()
+                                        shimmerStop()
                                         rv_main.visible()
                                         rv_search.gone()
                                         tv_no_data.gone()
@@ -138,14 +139,14 @@ class MainFragment : Fragment() {
                 when (it.status) {
                     Status.LOADING -> {
                         // View Status
-                        progress_bar_main.visible()
+                        shimmerStart()
                         rv_main.gone()
                         rv_search.gone()
                         tv_no_data.gone()
                     }
                     Status.SUCCESS -> {
                         // View Status
-                        progress_bar_main.gone()
+                        shimmerStop()
                         rv_main.visible()
                         rv_search.gone()
                         tv_no_data.gone()
@@ -165,7 +166,7 @@ class MainFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         // View Status
-                        progress_bar_main.gone()
+                        shimmerStop()
                         rv_main.gone()
                         rv_search.gone()
                         tv_no_data.visible()
@@ -177,11 +178,24 @@ class MainFragment : Fragment() {
 
     // this function for if search view not active show main recycler view
     private fun searchNotFocus() {
-        progress_bar_main.gone()
+        shimmerStop()
         rv_main.visible()
         rv_search.gone()
         tv_no_data.gone()
     }
+
+    // shimmer loading animation start
+    private fun shimmerStart() {
+        shimmer_frame.visible()
+        shimmer_frame.startShimmer()
+    }
+
+    // shimmer loading animation stop
+    private fun shimmerStop() {
+        shimmer_frame.gone()
+        shimmer_frame.stopShimmer()
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)
