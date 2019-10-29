@@ -41,7 +41,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> constructor(private
 
     protected abstract fun loadFromDb(): LiveData<ResultType>
 
-    protected abstract fun saveCallResult(item: RequestType)
+    protected abstract suspend fun saveCallResult(item: RequestType)
 
     fun asLiveData() = result as LiveData<Resource<ResultType>>
 
@@ -56,8 +56,8 @@ abstract class NetworkBoundResource<ResultType, RequestType> constructor(private
             setValue(Resource.loading(newData))
         }
 
-        apiResponse?.let {
-            result.addSource(it) { response ->
+        apiResponse?.let { data ->
+            result.addSource(data) { response ->
                 result.removeSource(apiResponse)
                 result.removeSource(dbSource)
 

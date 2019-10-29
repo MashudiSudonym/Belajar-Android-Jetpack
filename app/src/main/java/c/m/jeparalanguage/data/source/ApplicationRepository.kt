@@ -18,7 +18,7 @@ class ApplicationRepository(
     private val localRepository: LocalRepository,
     private val remoteRepository: RemoteRepository,
     private val contextProviders: ContextProviders,
-    private val context: Context
+    context: Context
 ) : ApplicationDataSource {
 
     private val isOnline = context.isNetworkStatusAvailable()
@@ -39,7 +39,7 @@ class ApplicationRepository(
             override fun loadFromDb(): LiveData<PagedList<ContentEntity>> =
                 localRepository.getContent().toLiveData(pageSize = 20)
 
-            override fun saveCallResult(item: List<ContentResponse>) {
+            override suspend fun saveCallResult(item: List<ContentResponse>) {
                 val contentEntity: ArrayList<ContentEntity> = arrayListOf()
 
                 for (resultResponse in item) {
@@ -72,7 +72,7 @@ class ApplicationRepository(
             override fun loadFromDb(): LiveData<PagedList<ContentEntity>> =
                 localRepository.searchContent(searchKeyword).toLiveData(pageSize = 5)
 
-            override fun saveCallResult(item: List<ContentResponse>) {}
+            override suspend fun saveCallResult(item: List<ContentResponse>) {}
         }.asLiveData()
 
     companion object {

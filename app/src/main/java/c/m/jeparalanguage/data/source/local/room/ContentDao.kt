@@ -8,15 +8,15 @@ import c.m.jeparalanguage.data.source.local.entity.ContentEntity
 interface ContentDao {
     // Insert data from remote repository
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertContent(contentEntity: List<ContentEntity>)
+    suspend fun insertContent(contentEntity: List<ContentEntity>)
 
     // Delete data from local repository for refresh data
     @Query("DELETE FROM word_table")
-    fun deleteContent()
+    suspend fun deleteContent()
 
     // transaction refresh data for local repository
     @Transaction
-    fun updateContent(contentEntity: List<ContentEntity>) {
+    suspend fun updateContent(contentEntity: List<ContentEntity>) {
         deleteContent()
         insertContent(contentEntity)
     }
