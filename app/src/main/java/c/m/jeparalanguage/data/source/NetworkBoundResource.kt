@@ -31,20 +31,6 @@ abstract class NetworkBoundResource<ResultType, RequestType> constructor(private
         }
     }
 
-    protected abstract fun onFetchFailed(message: String?)
-
-    protected open fun processResponse(response: ApiResponse<RequestType>) = response.body
-
-    protected abstract suspend fun createCall(): LiveData<ApiResponse<RequestType>>?
-
-    protected abstract fun shouldFetch(data: ResultType?): Boolean
-
-    protected abstract fun loadFromDb(): LiveData<ResultType>
-
-    protected abstract suspend fun saveCallResult(item: RequestType)
-
-    fun asLiveData() = result as LiveData<Resource<ResultType>>
-
     private fun setValue(newValue: Resource<ResultType>) {
         if (result.value != newValue) result.value = newValue
     }
@@ -94,5 +80,19 @@ abstract class NetworkBoundResource<ResultType, RequestType> constructor(private
             }
         }
     }
+
+    protected abstract fun onFetchFailed(message: String?)
+
+    protected open fun processResponse(response: ApiResponse<RequestType>) = response.body
+
+    protected abstract suspend fun createCall(): LiveData<ApiResponse<RequestType>>?
+
+    protected abstract fun shouldFetch(data: ResultType?): Boolean
+
+    protected abstract fun loadFromDb(): LiveData<ResultType>
+
+    protected abstract suspend fun saveCallResult(item: RequestType)
+
+    fun asLiveData() = result as LiveData<Resource<ResultType>>
 
 }
