@@ -67,7 +67,7 @@ class MainFragment : Fragment() {
                     true -> searchNotFocus()
                     false -> {
                         mainViewModel.getSearchKeyword(searchKeyword.toString())
-                        mainViewModel.searchContent.observe(this@MainFragment, Observer {
+                        mainViewModel.searchContent.observe(viewLifecycleOwner, Observer {
                             if (it != null) {
                                 when (it.status) {
                                     Status.LOADING -> {
@@ -134,7 +134,7 @@ class MainFragment : Fragment() {
     }
 
     private fun observeMainDataViewModel() {
-        mainViewModel.getContent().observe(this, Observer {
+        mainViewModel.getContent().observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 when (it.status) {
                     Status.LOADING -> {
